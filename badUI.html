@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bad UI Example</title>
+    <style>
+        body {
+            background-color: purple;
+            font-family: 'Luminari', fantasy;
+            color: red;
+            font-size: 24px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 50%;
+            background-color: yellow;
+            border: 2px solid purple;
+        }
+
+        button {
+            font-size: 10px;
+            background-color: orange;
+            color: blue;
+            border: none;
+            padding: 2px;
+            margin-right: 5px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+    </style>
+    <script>
+        function createButtonsInLine() {
+            const container = document.querySelector('.button-container');
+            for (let i = 0; i < 30; i++) {
+                const button = document.createElement('button');
+                button.textContent = getRandomLetter();
+                container.appendChild(button);
+            }
+        }
+
+        function getRandomLetter() {
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            return alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        }
+    </script>
+</head>
+<body onload="createButtonsInLine()">
+    <h1>Welcome to the Bad UI Example</h1>
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit">Login</button>
+        
+        <h1>Select your favorite color:</h1>
+        <select name="colors" id="colors">
+            <option value="red">Red</option>
+            <option value="normal green">normal green</option>
+            <option value="blue">Blue</option>
+            <option value="light blue">light blue</option>
+            <option value="medium blue">medium blue</option>
+            <option value="dark blue">dark blue</option>
+            <option value="darker blue">darker blue</option>
+            <option value="blue">blue</option>
+            <option value="bight green">bight green</option>
+            <option value="bighter green">bighter green</option>
+            <option value="kind of green">kind of green</option>
+            <option value="really red ">really red</option>
+            <option value="redest red">redest red</option>
+            
+        </select>
+    </form>
+    <div class="button-container"></div>
+</body>
+</html>
+
+
+
+
