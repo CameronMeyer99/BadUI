@@ -1,85 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bad UI Example</title>
-    <style>
-        body {
-            background-color: purple;
-            font-family: 'Luminari', fantasy;
-            color: red;
-            font-size: 24px;
-        }
-
-        input[type="text"], input[type="password"] {
-            width: 50%;
-            background-color: yellow;
-            border: 2px solid purple;
-        }
-
-        button {
-            font-size: 10px;
-            background-color: orange;
-            color: blue;
-            border: none;
-            padding: 2px;
-            margin-right: 5px;
-        }
-
-        .button-container {
-            display: flex;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            padding: 10px 0;
-        }
-    </style>
-    <script>
-        function createButtonsInLine() {
-            const container = document.querySelector('.button-container');
-            for (let i = 0; i < 30; i++) {
-                const button = document.createElement('button');
-                button.textContent = getRandomLetter();
-                container.appendChild(button);
+<<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bad UI Example</title>
+        <style>
+            body {
+                background-color: purple;
+                font-family: 'Luminari', fantasy;
+                color: red;
+                font-size: 24px;
             }
-        }
 
-        function getRandomLetter() {
-            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            return alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-        }
-    </script>
-</head>
-<body onload="createButtonsInLine()">
-    <h1>Welcome to the Bad UI Example</h1>
-    <form>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username"><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"><br><br>
-        <button type="submit">Login</button>
-        
-        <h1>Select your favorite color:</h1>
-        <select name="colors" id="colors">
-            <option value="red">Red</option>
-            <option value="normal green">normal green</option>
-            <option value="blue">Blue</option>
-            <option value="light blue">light blue</option>
-            <option value="medium blue">medium blue</option>
-            <option value="dark blue">dark blue</option>
-            <option value="darker blue">darker blue</option>
-            <option value="blue">blue</option>
-            <option value="bight green">bight green</option>
-            <option value="bighter green">bighter green</option>
-            <option value="kind of green">kind of green</option>
-            <option value="really red ">really red</option>
-            <option value="redest red">redest red</option>
+            input[type="text"], input[type="password"] {
+                width: 50%;
+                background-color: yellow;
+                border: 2px solid purple;
+            }
+
+            button {
+                font-size: 10px;
+                background-color: orange;
+                color: blue;
+                border: none;
+                padding: 2px;
+                margin-right: 5px;
+            }
+
+            .button-container {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding: 10px 0;
+            }
+        </style>
+        <script>
+            function createButtonsInLine() {
+                const container = document.querySelector('.button-container');
+                for (let i = 0; i < 30; i++) {
+                    const button = document.createElement('button');
+                    button.textContent = getRandomLetter();
+                    button.addEventListener('click', showRandomFact);
+                    container.appendChild(button);
+                }
+            }
+
+            function getRandomLetter() {
+                const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                return alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+            }
+
+            function showRandomFact() {
+                const fact = getRandomFact();
+                const factDisplay = document.getElementById('fact-display');
+                factDisplay.textContent = fact;
+            }
+
+            function getRandomFact() {
+                const facts = [
+                    'Fact 1: The Earth is not perfectly round.',
+                    'Fact 2: Honey never spoils.',
+                    'Fact 3: The shortest war in history lasted 38 minutes.',
+                    'Fact 4: The longest English word is 189,819 letters long.',
+                    'Fact 5: The Eiffel Tower can grow up to 15 cm during the summer.',
+                    'Fact 6: The oldest known material on Earth is Zircon.',
+                    'Fact 7: The Great Wall of China is not visible from space.',
+                    'Fact 8: The largest snowflake was 15 inches wide.',
+                    'Fact 9: The first recorded game of baseball was in 1846.',
+                    'Fact 10: The speed of light is approximately 299,792 kilometers per second.'
+                ];
+                return facts[Math.floor(Math.random() * facts.length)];
+            }
+        </script>
+    </head>
+    <body onload="createButtonsInLine()">
+        <h1>Welcome to the Bad UI Example</h1>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <button type="submit">Login</button>
             
-        </select>
-    </form>
-    <div class="button-container"></div>
-</body>
-</html>
+            <h1>Select your favorite color:</h1>
+            <select name="colors" id="colors">
+                <option value="red">Red</option>
+                <option value="normal green">normal green</option>
+                <option value="blue">Blue</option>
+                <option value="light blue">light blue</option>
+                <option value="medium blue">medium blue</option>
+                <option value="dark blue">dark blue</option>
+                <option value="darker blue">darker blue</option>
+                <option value="blue">blue</option>
+                <option value="bight green">bight green</option>
+                <option value="bighter green">bighter green</option>
+                <option value="kind of green">kind of green</option>
+                <option value="really red">really red</option>
+                <option value="redest red">redest red</option>
+                
+            </select>
+            </form>
+            <div class="button-container"></div>
+            <p id="fact-display"></p>
+        </body>
+        </html>
 
 
 
